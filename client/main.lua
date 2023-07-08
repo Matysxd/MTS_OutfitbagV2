@@ -60,11 +60,14 @@ AddEventHandler('mts_outfitbag:CheckForOutfits', function()
             isTimeoutActive = false
         end)
 
-
+        if Coonfig.Apparence == 'fivem-appearance' then
         exports['fivem-appearance']:openWardrobe(openWardrobe)
+        elseif Coonfig.Apparence == 'illenium-appearance' then
+        TriggerEvent('illenium-appearance:client:openOutfitMenu')
     else
         lib.notify({ title = 'Clothing bag', description = 'You can open the clothing bag once in '..Config.OpenDelay..' minutes', type = 'error' })
     end
+end
 end)
 
 RegisterNetEvent('mts_outfitbag:pickupShoppingbag')
@@ -80,4 +83,20 @@ AddEventHandler('mts_outfitbag:pickupShoppingbag', function()
     else
         lib.notify({ title = 'Clothing bag', description = 'No bag found nearby.', type = 'error' })
     end
+end)
+
+
+
+AddEventHandler('onResourceStop', function(resourceName)
+if (GetCurrentResourceName() ~= resourceName) then
+    return
+end
+print('Script' .. resourceName .. ' was stopped.')
+end)
+
+AddEventHandler('onResourceStart', function(resourceName)
+if (GetCurrentResourceName() ~= resourceName) then
+    return
+end
+print('Script ' .. resourceName .. ' is starting.')
 end)
