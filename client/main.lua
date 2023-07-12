@@ -60,14 +60,14 @@ AddEventHandler('mts_outfitbag:CheckForOutfits', function()
             isTimeoutActive = false
         end)
 
-        if Coonfig.Apparence == 'fivem-appearance' then
-        exports['fivem-appearance']:openWardrobe(openWardrobe)
-        elseif Coonfig.Apparence == 'illenium-appearance' then
-        TriggerEvent('illenium-appearance:client:openOutfitMenu')
+        if Config.Apparence == 'fivem-appearance' then
+            exports['fivem-appearance']:openWardrobe(openWardrobe)
+        elseif Config.Apparence == 'illenium-appearance' then
+            TriggerEvent('illenium-appearance:client:openOutfitMenu')
+        end
     else
         lib.notify({ title = 'Clothing bag', description = 'You can open the clothing bag once in '..Config.OpenDelay..' minutes', type = 'error' })
     end
-end
 end)
 
 RegisterNetEvent('mts_outfitbag:pickupShoppingbag')
